@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/screens/cart_page.dart';
+import 'package:online_shop/screens/categories.dart';
 import 'package:online_shop/screens/home.dart';
 
 class Bottomnav extends StatefulWidget {
@@ -13,7 +14,7 @@ class _BottomnavState extends State<Bottomnav> {
   int _selectedIndex = 0;
   static const List<Widget> _bottomNavCategories = [
     HomePage(),
-    Text('Categories'),
+    Categories(),
     CartPage(),
     Text("Profile"),
   ];

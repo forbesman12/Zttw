@@ -187,7 +187,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           // Orange container
           Container(
-            padding: EdgeInsets.only(left: 195, top: 20),
+            padding: EdgeInsets.only(left: 215, top: 20),
             width: MediaQuery.of(context).size.width * 0.90,
             height: MediaQuery.of(context).size.height * 0.142,
             decoration: BoxDecoration(
