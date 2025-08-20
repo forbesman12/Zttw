@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:online_shop/model/product_model.dart';
+import 'package:online_shop/screens/Home/model/product_model.dart';
 import 'package:online_shop/services/api_services.dart';
 
 class ProductProvider extends ChangeNotifier {

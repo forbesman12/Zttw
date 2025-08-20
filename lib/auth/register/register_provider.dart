@@ -12,7 +12,7 @@ class RegisterProvider extends ChangeNotifier {
     String avatar,
   ) async {
     //define the url
-    final url = ApiServices.baseUrl;
+    final url = ApiServices.registerUrl;
     var response = await http.post(
       Uri.parse(url),
       headers: {'Content-Type': 'application/json'},
@@ -23,9 +23,9 @@ class RegisterProvider extends ChangeNotifier {
         'avatar': avatar,
       }),
     );
-    print('response.body');
-    print('response.status code');
-    if (response.statusCode == 200) {
+    print(response.body);
+    print(response.statusCode);
+    if (response.statusCode == 201) {
       print('success');
     } else {
       print('something went wrong');

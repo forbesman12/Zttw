@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:online_shop/Utils/bottomnav.dart';
+import 'package:online_shop/auth/login/login_provider.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -13,6 +15,8 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
 
   bool _obscurePassword = true;
+  bool _isLoading = false; // Add loading state
+  final SignProvider signProvider = SignProvider();
 
   @override
   void dispose() {
@@ -21,18 +25,23 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
-  void _login() {
+  Future<void> _login(context) async {
     if (_formKey.currentState!.validate()) {
-      // For now, just print the values
-      print('Email: ${_emailController.text}');
-      print('Password: ${_passwordController.text}');
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Login successful!')),
-      );
-
-      // Navigate to home page after login
-      Navigator.pushReplacementNamed(context, '/home');
+      setState(() {
+        _isLoading = true;
+      });
+      
+        await signProvider.signin(
+          context,
+          _emailController.text.trim(),
+          _passwordController.text.trim(),
+        );
+        // No need to handle navigation here, it's handled in provider
+      
+        setState(() {
+          _isLoading = false;
+        });
+      
     }
   }
 
@@ -135,20 +144,22 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   width: double.infinity,
                   height: 50,
-                  child: ElevatedButton(
-                    onPressed: _login,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.amber,
-                    ),
-                    child: const Text(
-                      'Login',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
+                  child: _isLoading
+                      ? const Center(child: CircularProgressIndicator())
+                      : ElevatedButton(
+                          onPressed:() =>  _login(context),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.amber,
+                          ),
+                          child: const Text(
+                            'Login',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
                 ),
 
                 const SizedBox(height: 20),
@@ -180,3 +191,4 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+

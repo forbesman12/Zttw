@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:online_shop/model/product_model.dart';
-import 'package:online_shop/provider/product_provider.dart';
+import 'package:online_shop/screens/Home/model/product_model.dart';
+import 'package:online_shop/screens/provider/product_provider.dart';
 import 'package:provider/provider.dart';
 
 class ProductPage extends StatelessWidget {

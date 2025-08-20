@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:online_shop/screens/cart_page.dart';
-import 'package:online_shop/screens/categories.dart';
-import 'package:online_shop/screens/home.dart';
+import 'package:online_shop/screens/Cart/cart_page.dart';
+import 'package:online_shop/screens/Categories/categories.dart';
+import 'package:online_shop/screens/Home/home.dart';
+import 'package:online_shop/screens/Profile/profile_page.dart';
 
 class Bottomnav extends StatefulWidget {
   const Bottomnav({super.key});
@@ -16,7 +17,7 @@ class _BottomnavState extends State<Bottomnav> {
     HomePage(),
     Categories(),
     CartPage(),
-    Text("Profile"),
+    ProfilePage()
   ];
 
   void _onItemTapped(int index) {

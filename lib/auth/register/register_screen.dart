@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/auth/register/register_provider.dart';
-import 'package:online_shop/screens/login_page.dart';
+import 'package:online_shop/auth/login/login_page.dart';
 
 class CreateAccountPage extends StatefulWidget {
-  const CreateAccountPage({Key? key}) : super(key: key);
+  const CreateAccountPage({super.key});
 
   @override
   State<CreateAccountPage> createState() => _CreateAccountPageState();
@@ -212,8 +212,15 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                         color: Colors.white,
                       ),
                     ),
+                    
                   ),
                 ),
+                TextButton(onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
+                }, child: Text('Login instead', style: TextStyle(color: Colors.blue),)),
               ],
             ),
           ),
