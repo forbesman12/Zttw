@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/Utils/bottomnav.dart';
 import 'package:online_shop/screens/Profile/Provider/profile_provider.dart';
+import 'package:online_shop/screens/SplashScreen/splash_screen.dart';
 import 'package:online_shop/screens/provider/product_provider.dart';
 import 'package:online_shop/auth/register/register_screen.dart';
 import 'package:online_shop/auth/login/login_page.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: CreateAccountPage(),
+        home: SplashScreen(),
       ),
     );
   }

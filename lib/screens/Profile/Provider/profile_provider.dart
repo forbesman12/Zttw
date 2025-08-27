@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:online_shop/auth/login/login_page.dart';
 import 'package:online_shop/screens/Profile/Model/profile_model.dart';
 import 'package:online_shop/services/api_services.dart';
 import 'package:online_shop/storage/prefs.dart';
@@ -35,6 +36,33 @@ class ProfileProvider extends ChangeNotifier {
     } else {
       print('Failed to load profile: ${response.statusCode}');
       throw Exception('Failed to load profile');
+    }
+  }
+
+  Future<void> logout(BuildContext context) async {
+    try {
+      // Remove the access token from shared preferences
+      await Prefs.removeAccessToken();
+      
+      // Clear the profile data
+      _profileModel = null;
+      notifyListeners();
+      
+      // Navigate to login page using MaterialPageRoute
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => LoginPage()),
+      );
+      
+      // Show success message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Logged out successfully')),
+      );
+    } catch (e) {
+      print('Error during logout: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Error during logout')),
+      );
     }
   }
 }

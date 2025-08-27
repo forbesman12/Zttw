@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/Utils/bottomnav.dart';
 import 'package:online_shop/auth/login/login_provider.dart';
+import 'package:online_shop/auth/register/register_screen.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -49,11 +50,8 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        
         title: const Text('Login'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -171,7 +169,9 @@ class _LoginPageState extends State<LoginPage> {
                     const Text("Don't have an account?"),
                     TextButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(context, '/create-account');
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => CreateAccountPage(),
+                        ));
                       },
                       child: const Text(
                         'Sign up',

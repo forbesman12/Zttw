@@ -18,20 +18,27 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Profile')),
+      appBar: AppBar(
+      ),
       body: Consumer<ProfileProvider>(
         builder: (context, profile, child) {
           if (profile.profileModel == null) {
             return const Center(child: CircularProgressIndicator());
           }
           return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircleAvatar(radius: 50
               ,backgroundImage: NetworkImage(profile.profileModel!.avatar.toString()) ,),
               Text(profile.profileModel!.name.toString()),
               Text(profile.profileModel!.email.toString()),
+              TextButton(
+                onPressed: () {
+                  profile.logout(context);
+                }, 
+                child: Text('Logout', style: TextStyle(color: Colors.red)),
+              )
             ],
           );
         },

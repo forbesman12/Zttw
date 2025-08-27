@@ -17,5 +17,7 @@ class Prefs {
   static Future <String?> getAccessToken() async {
     return _preferences.getString(_accessToken);
   }
-
+ static Future<void> removeAccessToken() async {
+    await _preferences.remove(_accessToken);
+  }
 }
